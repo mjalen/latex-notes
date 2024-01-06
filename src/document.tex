@@ -58,11 +58,10 @@
     {\end{trivlist}}
 
 % header/footer
-% TODO Remember to update.
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{Jalen Moore} 
-\fancyhead[R]{Title} 
+\fancyhead[L]{mjalen/pde\_strauss\_solutions} % Remember to update.
+\fancyhead[R]{Chapter 6: Section 1} 
 \fancyfoot[R]{Page \thepage}
 
 
@@ -72,8 +71,151 @@
 \raggedcolumns{}
 \tableofcontents
 
-\section{Hello.}
+\section{Section 6.1}
 
-Hello.
+\subsection{Question 1}
+
+Show that a function which is a power series in the complex variable $x+iy$ must satisfy the Cauchy-Riemann equations and therefore the Laplace's equation.
+
+\begin{answer}
+    Suppose $f(z)$ is an analytic function such that $f(z) = u(x+i y) + i v(x + i y) = \sum_{n=0}^\infty a_n (x + i y)^n$. The functions $u$ and $v$ can be expressed as follows:
+    
+    \begin{align*}
+        u(x+i y) &= - i v(x + i y) + \sum_{n=0}^\infty a_n (x+ i y)^n,\\
+        i v(x + i y) &= - u(x + i y) + \sum_{n=0}^\infty a_n (x + i y)^n. 
+    \end{align*}
+
+    The partial derivatives of $u$ and $v$ with respect to $x$ and $y$ are
+
+    \begin{align*}
+        u_x(x + i y) &= - i v_x (x + i y) + \sum_{n=0}^\infty n \cdot a_n (x + i y)^n,\\
+        i u_y(x + i y) &= v_y (x + i y) + i \sum_{n=0}^\infty n \cdot a_n (x + i y)^n.
+    \end{align*}
+
+    And,
+
+    \begin{align*}
+        i v_x (x + i y) &= - u_x(x+ i y) + \sum_{n=0}^\infty n \cdot a_n (x + i y)^n,\\
+        - v_y (x + i y) &= u_y (x + i y) + i \sum_{n=0}^\infty n \cdot a_n (x + i y)^n. 
+    \end{align*}
+
+    Plugging these values into the Cauchy-Riemann equations yields the following.
+
+    \begin{align*}
+        0   &= \partialderivative{u}{x} - \partialderivative{v}{y},\\
+            &= \left[- i v_x (x + i y) + \sum_{n=0}^\infty n \cdot a_n (x + i y)^n \right]
+            - \left[ - u_y (x + i y) - i \sum_{n=0}^\infty n \cdot a_n (x + i y)^n  \right],\\
+            &= \left[- i v_x (x + i y) + \sum_{n=0}^\infty n \cdot a_n (x + i y)^n \right]
+            + \left[ u_y (x + i y) + i \sum_{n=0}^\infty n \cdot a_n (x + i y)^n  \right],\\
+            &=   \left[ u_y (x+ iy ) - i v_x(x + iy ) \right] + (1 + i) \sum_{n=0}^\infty n \cdot a_n (x + i y)^n.
+    \end{align*}
+
+    And, 
+
+    \begin{align*}
+        0   &= \partialderivative{u}{y} + \partialderivative{v}{x},\\
+            &= \frac{1}{i} \left[v_y (x + i y) + i \sum_{n=0}^\infty n \cdot a_n (x + i y)^n \right] 
+            + \frac{1}{i} \left[ - u_x(x+ i y) + \sum_{n=0}^\infty n \cdot a_n (x + i y)^n \right],\\
+            &= \left[ v_y (x + i y) - u_x(x+ i y) \right]
+               + (1 + i) \sum_{n=0}^\infty n \cdot a_n ( x + i y)^n 
+    \end{align*}
+
+    {\color{blue} Revisit.}
+\end{answer} 
+
+\subsection{Question 2}
+
+Find the solutions that depend only on $r$ of the equation $\Delta_3 u = k^2 u$, where $k$ is a positive constant. (\textit{Hint:} Substitute $u = v/r$.)
+
+\begin{answer}
+    As provided by the spherical Laplace equation in Equation 6 (p. 159), the PDE becomes the following in terms of $r$.
+
+    \begin{align*}
+        u_{r r} + \frac{2}{r} u_r = k^2 u.
+    \end{align*}
+
+    Substituting $u = v / r$ and its derivatives derives the following equation. 
+
+    \begin{align*}
+        0   &= \left( \frac{v_{r r}}{r} - \frac{2 v_r}{r^2} + \frac{2 v}{ r^3 } \right) 
+        + \left( \frac{2}{r} \left[ \frac{v_r}{r} - \frac{v}{r^2}  \right] \right)
+        - k^2 \left( \frac{v}{r} \right),\\
+            &= \frac{v_{r r}}{r} - k^2 \frac{v}{r},\\
+            &= v_{r r} - k^2 v.     
+    \end{align*}
+
+    This ODE solves to $v = c_1 \cosh{k r} + c_2 \sinh{k r}$. Thus, the general solution of the provided problem is
+
+    \begin{align*}
+        u(r) = \frac{1}{r} \left[ c_1 \cosh{k r} + c_2 \sinh{k r} \right] 
+    \end{align*}
+
+    provided $c_1$ and $c_2$ are constant. 
+    
+    {\color{blue} \textbf{Note:} The solution can also be written in terms of the exponential, $u(r) = \frac{1}{r} \left[ c_1 e^{k r} + c_2 e^{-k r} \right]$.}
+\end{answer}
+
+\subsection{Question 3}
+
+Find the solutions that depend only on $r$ of the equation $\Delta_2 u = k^2 u$, where $k$ is a positive constant. (\textit{Hint:} Look up Bessel's differential equation in Section 10.5.)
+
+\begin{answer}
+    As provided by the polar Laplace equation in Equation 5 (p. 157), the PDE becomes the following in terms of $r$.
+
+    \begin{align*}
+        u_{r r} + \frac{1}{r} u_{r} = k^2 u.
+    \end{align*}
+
+    Notice that $-k^2 = (ik)^2$. Then,
+
+    \begin{align*}
+        u_{r r} + \frac{1}{r} u_r + (i k)^2 u = 0.
+    \end{align*}
+
+    {\color{blue} Revisit. The exercise solution I have writes $u(r)$ in terms of Bessel's function, but I do not buy the derivation they have.}
+\end{answer}
+
+\subsection{Question 4}
+
+Solve $\Delta_3 u = 0$ in the spherical shell $0<a<r<b$ with the boundary conditions $u=A$ on $r=a$ and $u=B$ on $r=b$, where $A$ and $B$ are constants. (\textit{Hint:} Look for a solution depending only on $r$.)
+
+\begin{answer}
+    The spherical Laplace equation in terms of $r$ is given by
+    
+    \begin{align*}
+        0 = u_{r r} + \frac{2}{r} u_r. 
+    \end{align*}
+
+    The solution to this ODE is $u(r) =-c_1 r^{-1} + c_2$. The boundary conditions derive the system of equations below. 
+    
+    \begin{align*}
+        A = u(a) &= - c_1 (a)^{-1} + c_2,\\
+        B = u(b) &= - c_1 (b)^{-1} + c_2.
+    \end{align*}
+
+    Subtracting these equations derives $c_1$.
+    
+    \begin{align*}
+        A - B &= b^{-1} c_1 - a^{-1} c_1,\\
+              &= \left( \frac{1}{b} - \frac{1}{a} \right) c_1,\\
+              &= \frac{a - b}{a b} c_1,\\
+        \frac{(A - B)a b}{a - b}  &= c_1.
+    \end{align*}
+
+    Substitution into the first equation yields $c_2$. 
+
+    \begin{align*}
+        A &= - \frac{(A - B)a b}{a - b} \cdot (a)^{-1} + c_2,\\
+          &= - \frac{(A - B) b}{a - b} + c_2,\\
+        A + \frac{(A - B) b}{a - b} &= c_2.
+    \end{align*}
+
+    Thus, the solution is 
+
+    \begin{align*}
+        u(r) &= - \left[\frac{(A - B)a b}{a - b} \right] r^{-1} + A + \frac{(A - B) b}{a - b},\\
+             &= A + \frac{(A - B) b}{a - b} \cdot \left[1 - a r^{-1} \right].
+    \end{align*}
+\end{answer}
 
 \end{document}
