@@ -1,0 +1,79 @@
+\documentclass[a4paper, 10pt]{article}
+ 
+% packages
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,tensor,physics}
+\usepackage{setspace,multicol,tasks}
+\usepackage[shortlabels]{enumitem}
+\usepackage{fancyhdr}
+\usepackage{graphicx,hyperref}
+\usepackage[backend=biber, style=apa]{biblatex}
+
+% set section count.
+\setcounter{secnumdepth}{0}
+
+% multi column spacing.
+\setlength{\columnseprule}{1pt}
+
+% \doublespacing
+\graphicspath{./}
+
+% visual setup
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+\graphicspath{./}
+
+% bib: in case I need outside sources.
+% \addbibresource{~~~.bib}
+
+% visual setup
+\hypersetup{colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black}
+\graphicspath{./}
+
+% define math fields
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+% Stolen environments.
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip\labelsep{\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{answer}[1][Answer]{\begin{trivlist}
+\item[\hskip\labelsep{\textit{#1.}}]}{\end{trivlist}}
+
+% My own defined environments
+\newenvironment{case}[2][Case]{\begin{trivlist}
+    \item[\hskip\underline{
+        \hskip\labelsep{#1}
+        \hskip\labelsep{#2.}
+    }]}
+    {\end{trivlist}}
+
+% header/footer
+% TODO Remember to update.
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Jalen Moore} 
+\fancyhead[R]{Title} 
+\fancyfoot[R]{Page \thepage}
+
+
+% doc start
+\begin{document}
+
+\raggedcolumns{}
+\tableofcontents
+
+\section{Hello.}
+
+Hello.
+
+\end{document}
