@@ -39,7 +39,7 @@
 
 	inputs = 
 		{
-			nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # unstable should be fine
+			nixpkgs.url = "github:NixOS/nixpkgs"; # unstable should be fine
 			flake-utils.url = "github:numtide/flake-utils"; # to auto-configure systems
 		};
 }
