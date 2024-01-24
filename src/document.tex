@@ -85,12 +85,84 @@ Show that the following equation has at least one solution in the given interval
 \end{align*}
 
 \begin{answer}
-	Let $f\in C[0,1]$ such that $f(x) = \sqrt{x} - \cos{x}$. Then,
+	Notice that $\sqrt{x}$ and $\cos{x}$ are both continuous for $[0,1]$. Therefore, let $f\in C[0,1]$ such that $f(x) = \sqrt{x} - \cos{x}$. Then,
 
 	\begin{align*}
 		f(0) &= \sqrt{0} - \cos{0} = 0 - 1 = -1,\\
 		f(1) &= \sqrt{1} - \cos{1} = 1 - 0.5403 = 0.4597.  
 	\end{align*}
+\end{answer}
+
+Thus by the Intermediate Value Theorem, there exists a root $c\in (0,1)$ such that $f(c)=0$.
+
+\subsection{Exercise 5A}
+
+Find $\max_{a\leq x \leq b} | f(x) |$ for the following function and interval.
+
+\begin{align*}
+	f(x) = \frac{(2 - e^x + 2x)}{3}, [0,1]
+\end{align*}
+
+\begin{answer}
+	The function $f(x)$ is given such that $f\in C[0,1]$. The derivative of $f(x)$ is $f'(x) = \frac{- e^x + 2}{3}$. Solving this derivative derives the following. 
+
+	\begin{align*}
+		0 &= \frac{- e^x + 2}{3},\\
+		0 &= - e^x + 2,\\
+		e^x &= 2,\\
+		x &= \ln{2}.
+	\end{align*}
+
+	Therefore by the Extreme Value Theorem, the extrema must occur at $x\in \{ 0, \ln{2}, 1 \}$. Therefore,
+
+	\begin{align*}
+		f(0) &= \frac{[2 - e^0 + 2\cdot (0)]}{3} = \frac{1}{3},\\
+		f(\ln{2}) &= \frac{(2 - e^{\ln{2}} + 2\ln{2})}{3} \approx - 0.4621,\\ 
+		f(1) &= \frac{(2 - e^1 + 2\cdot (1))}{3} = \frac{4 -e^1}{3} \approx - 0.4272.
+	\end{align*}
+
+	Thus, the absolute value of these possible extrema provides 
+
+	\begin{align*}
+		\max_{x\in [0,1]} \left| \frac{(2 - e^x + 2x)}{3} \right| = 0.4621.
+	\end{align*}
+\end{answer}
+
+\subsection{Exercise 11}
+
+Find the second Taylor polynomial $P_2(x)$ for the function $f(x)=e^x \cos{x}$ about $x_0 = 0$.
+
+\begin{enumerate}[(a)]
+	\item Use $P_2(0.5)$ to approximate $f(0.5)$. Find an upper bound for error $\left| f(0.5) - P_2(0.5) \right|$ using the error formula and compare it to the actual error.
+	\item Find a bound for the error $\left| f(x) - P_2(x) \right|$ in using $P_2(x)$ to approximate $f(x)$ on the interval $[0,1]$.
+	\item Approximate $\int_0^1 f(x) \dd{x}$ using $\int_0^1 P_2(x) \dd{x}$.
+	\item Find an upper bound for the error in (c) using $\int_0^1 \left| R_2(x) \dd{x} \right|$ and compare the bound to the actual error.
+\end{enumerate}
+
+\begin{answer}
+	The second Taylor polynomial for $f(x)$ is
+
+	{\color{blue} Organize this, this is messy.}
+
+	\begin{align*}
+		P_2(x) &= \sum_{k=0}^2 \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k,\\
+			   &= e^{x_0} \cos{x_0} + \left[ e^{x_0} \cos{x_0} - e^{x_0} \sin{x_0} \right] x + \left[ e^{x_0} \cos{x_0} - e^{x_0} \sin{x} - e^{x_0} \sin{x_0} - e^{x_0} \cos{x_0} \right] x^2,\\
+			   &= 1 + \left[ 1 - 0  \right] x + \left[ 1 - 0 - 0 - 1 \right] x^2,\\
+			   &= 1 + x.
+	\end{align*}
+
+	Therefore, 
+
+	\begin{enumerate}[(a)]
+		\item The actual and approximate values are 
+
+			\begin{align*}
+				f(0.5) &= e^{0.5} \cos{(0.5)} = - 1.4468890366,\\
+				P_2(0.5) &= 1 + 0.5 = 1.5.
+			\end{align*}
+
+			{\color{blue} Finish part.}
+	\end{enumerate}
 \end{answer}
 
 \section{Section 1.2}
