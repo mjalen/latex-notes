@@ -146,8 +146,13 @@ Find the second Taylor polynomial $P_2(x)$ for the function $f(x)=e^x \cos{x}$ a
 
 	\begin{align*}
 		P_2(x) &= \sum_{k=0}^2 \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k,\\
-			   &= e^{x_0} \cos{x_0} + \left[ e^{x_0} \cos{x_0} - e^{x_0} \sin{x_0} \right] x + \left[ e^{x_0} \cos{x_0} - e^{x_0} \sin{x} - e^{x_0} \sin{x_0} - e^{x_0} \cos{x_0} \right] x^2,\\
-			   &= 1 + \left[ 1 - 0  \right] x + \left[ 1 - 0 - 0 - 1 \right] x^2,\\
+			   &= e^{x_0} \cos{x_0}\\
+			   &+ e^{x_0} \left[ \cos{x_0} - \sin{x_0} \right] x\\
+			   &+ \frac{e^{x_0} \left[\cos{x_0} - \sin{x_0} - \sin{x_0} - \cos{x_0} \right]}{2} x^2,\\
+			   &= e^{x_0} \cos{x_0}\\
+			   &+ e^{x_0} \left[ \cos{x_0} - \sin{x_0} \right] x\\
+			   &- e^{x_0} \sin{x_0} x^2,\\
+			   &= 1 + \left[ 1 - 0  \right] x + 0 \cdot x^2,\\
 			   &= 1 + x.
 	\end{align*}
 
@@ -161,7 +166,24 @@ Find the second Taylor polynomial $P_2(x)$ for the function $f(x)=e^x \cos{x}$ a
 				P_2(0.5) &= 1 + 0.5 = 1.5.
 			\end{align*}
 
-			{\color{blue} Finish part.}
+			To find the upper bound error, the third derivative of $f$ is
+
+			\begin{align*}
+				f^{(3)}(x) &= -2 e^{x} \left[ \sin{x} + \cos{x} \right]. 
+			\end{align*}
+
+			Therefore, the upper bound error is
+
+			\begin{align*}
+				| f(0.5) - P_2(0.5) | &= | R_2 (0.5) |,\\
+				&\leq \frac{f^{(3)}(\xi)}{3!} (0.5 - 0)^{3},\\
+				&= \frac{-2 e^\xi \left[ \sin\xi + \cos\xi \right]}{6} (0.5)^3,\\
+				&\leq \max_\xi \frac{-2e^\xi \left[ \sin\xi + \cos\xi \right]}{6} \cdot 0.125,\\
+				&= \frac{-2 \left[ \sin{0.5} + 1 \right]}{6} \cdot 0.125,\\ 
+				&= 
+			\end{align*}
+
+			{\color{blue} Use mathematica to calculate and check derivatives and maximums.}
 	\end{enumerate}
 \end{answer}
 
