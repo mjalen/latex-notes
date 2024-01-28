@@ -162,7 +162,7 @@ Find the second Taylor polynomial $P_2(x)$ for the function $f(x)=e^x \cos{x}$ a
 		\item The actual and approximate values are 
 
 			\begin{align*}
-				f(0.5) &= e^{0.5} \cos{(0.5)} = - 1.4468890366,\\
+				f(0.5) &= e^{0.5} \cos{(0.5)} = 1.4468890366,\\
 				P_2(0.5) &= 1 + 0.5 = 1.5.
 			\end{align*}
 
@@ -179,12 +179,121 @@ Find the second Taylor polynomial $P_2(x)$ for the function $f(x)=e^x \cos{x}$ a
 				&\leq \frac{f^{(3)}(\xi)}{3!} (0.5 - 0)^{3},\\
 				&= \frac{-2 e^\xi \left[ \sin\xi + \cos\xi \right]}{6} (0.5)^3,\\
 				&\leq \max_\xi \frac{-2e^\xi \left[ \sin\xi + \cos\xi \right]}{6} \cdot 0.125,\\
-				&= \frac{-2 \left[ \sin{0.5} + 1 \right]}{6} \cdot 0.125,\\ 
-				&= 
+				&= \frac{-2 e^{0.5} \left[ \sin{0.5} + \cos{0.5} \right]}{6} \cdot 0.125,\\ 
+				&= 0.0932.
 			\end{align*}
 
-			{\color{blue} Use mathematica to calculate and check derivatives and maximums.}
+			{\color{blue} Make sure the absolute value removal makes sense (Hint: They don't.}
+
+			The actual error is
+
+			\begin{align*}
+				| f(0.5) - P_2(0.5) | &= | 1.446889 - 1.5 |,\\
+				&= | - 0.053111 |,\\
+				&= 0.053111.
+			\end{align*}
+
+		\item The non-fixed upper bound error for $n=2$ is the following.
+
+			\begin{align*}
+				| f(x) - P_2(x) | &= | R_2 (x) |,\\
+				&= | \frac{f^{(3)}(\xi)}{3!} x^3 |,\\
+				&\leq \max_{\xi \in [0,1]} \max_{x\in [0, 1]} \left| \frac{f^{(3)}(\xi)}{3!} x^3 \right|,\\
+				&= \max_{\xi \in [0,1]} \max_{x\in [0, 1]} \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{6} x^3 \right|,\\ 
+				&= \max_{\xi \in [0,1]} \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{6} \right|,\\
+				&= 1.2520.
+			\end{align*}
+
+			{\color{blue} Perhaps add more derivation for max.}
+
+		\item 
+
+			\begin{align*}
+				\int_0^1 f(x) \dd{x} &\approx \int_0^1 P_2(x) \dd{x},\\
+				&= \int_0^1 1 + x \dd{x},\\
+				&= x + \frac{x^2}{2} \Bigm|_0^1,\\
+				&= \left( 1 + \frac{1}{2} \right) - 0,\\
+				&= 1.5.
+			\end{align*}
+
+		\item The upper bound error is 
+
+			\begin{align*}
+				\left| \int_0^1 f(x) \dd{x} - \int_0^1 P_2(x) \dd{x} \right| 
+				&= \left| \int_0^1 R_2(x) \dd{x} \right|,\\
+				&= \left| \int_0^1 \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{6} x^3 \dd{x} \right|,\\
+				&= \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{24} x^4 \Bigm|_0^1  \right|,\\
+				&= \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{24} \right|,\\
+				&\leq \max_{\xi\in[0,1]} \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{24} \right|,\\
+				&= 0.313.
+			\end{align*}
+
+			In contrast, the actual error is
+
+			\begin{align*}
+				\left| \int_0^1 f(x) \dd{x} - \int_0^1 P_2(x) \dd{x} \right| 
+				&= \left| \int_0^1 e^x \cos{x} \dd{x} - 1.5 \right|,\\
+				&= \left| \frac{e^x \cos{x} + e^x \sin{x}}{2} \Bigm|_0^1 - 1.5 \right|,\\
+				&= \left| \frac{e^1 \cos{1} + e^1 \sin{1}}{2} - \frac{1}{2} - 1.5 \right|,\\
+				&= \left| 1.8780 - 2 \right|,\\
+				&= 0.1220.
+			\end{align*}
 	\end{enumerate}
+
+	{\color{blue} Clean up this problem. The answers are right, but it is messy.}
+\end{answer}
+
+\subsection{Exercise 18}
+
+Let $f(x)=(1-x)^{-1}$ and $x_0=0$. Find the $n$th Taylor polynomial $P_n(x)$ for $f(x)$ about $x_0$. Find a value of $n$ necessary for $P_n(x)$ to approximate $f(x)$ to within $10^{-6}$ on $[0, 0.5]$.
+
+\begin{answer}
+	Explicitly deriving the first few derivatives of $f(x)$ yields:
+
+	\begin{align*}
+		f^{(0)}(x) &= (1-x)^{-1} = 0! (1-x)^{-1},\\
+		f^{(1)}(x) &= (1-x)^{-2} = 1! (1-x)^{-2},\\
+		f^{(2)}(x) &= 2(1-x)^{-3} = 2! (1-x)^{-3},\\
+		f^{(3)}(x) &= 6(1-x)^{-4} = 3! (1-x)^{-4},\\
+		f^{(4)}(x) &= 24(1-x)^{-5} = 4! (1-x)^{-5}\ldots
+	\end{align*}
+
+	Therefore, from this pattern the formula for the $k$th derivative must be 
+
+	\begin{align*}
+		f^{(k)}(x) &= k! (1-x)^{-(k+1)}.
+	\end{align*}
+
+	Therefore, the $n$th Taylor polynomial is
+
+	\begin{align*}
+		P_n(x; x_0 = 0) &= \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k,\\
+		&= \sum_{k=0}^n (1-x_0)^{-(k+1)} (x - x_0)^k,\\
+		&= \sum_{k=0}^n 1^{-(k+1)} x^k,\\
+		&= \sum_{k=0}^n x^k.
+	\end{align*}
+
+	The remainder is
+
+	\begin{align*}
+		R_n (x) &= \frac{f^{(n+1)}(\xi)}{(n+1)!} x^{n+1},\\
+				&= (1-\xi)^{-(n+2)} x^{n+1}.
+	\end{align*}
+
+	To approximate $f(x)$ within $10^{-6}$, the following must be true
+
+	\begin{align*}
+		10^{-6} &\geq \left| f(x) - P_n (x) \right|,\\
+				&= \left| R_n (x) \right|,\\
+				&= \left| (1-\xi)^{-(n+2)} x^{n+1} \right|.
+	\end{align*}
+
+	The upper bound error is then
+
+	\begin{align*}
+		10^{-6} &\geq \max_{x\in [0,0.5]} \max_{\xi\in [0,0.5]} \left| (1-\xi)^{-(n+2)} x^{n+1} \right|,\\
+				&= \max_{x\in [0,0.5]}
+	\end{align*}
 \end{answer}
 
 \section{Section 1.2}
